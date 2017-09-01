@@ -11,7 +11,7 @@ class Answers::ChecksController < ApplicationController
       p `rails runner #{filename}`.chomp
       logger.info `rails runner #{filename}`.chomp
       puts 'end'
-      sql = Exercise.find_by_sql('select * from exercises').to_s
+      sql = Exercise.find_by_sql('select * from exercises')
       ar_sql = `rails runner #{filename}`.chomp
       bool = (sql == ar_sql)
     rescue => e
