@@ -1,4 +1,4 @@
-FROM ruby:2.3.3
+FROM ruby:2.4.1
 ENV LANG C.UTF-8
 RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs fonts-takao imagemagick
 RUN mkdir /app
