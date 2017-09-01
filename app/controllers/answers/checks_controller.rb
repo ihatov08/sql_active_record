@@ -3,7 +3,10 @@ class Answers::ChecksController < ApplicationController
     begin
       sql = Exercise.find_by_sql(Exercise.find(params[:exercise_id]).title)
       ar_sql = eval(params[:answer])
-      unless ar_sql.class == Array
+
+      if ar_sql.respond_to?(:to_a)
+        ar_sql = ar_sql.to_a
+      else
         ar_sql = [ar_sql]
       end
       bool = (sql == ar_sql)
