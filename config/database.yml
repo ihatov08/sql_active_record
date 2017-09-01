@@ -10,15 +10,12 @@
 #   http://dev.mysql.com/doc/refman/5.7/en/old-client.html
 #
 default: &default
-  adapter: mysql2
-  encoding: utf8mb4
-  charset: utf8mb4
-  collation: utf8mb4_general_ci
-  pool: 5
-  username: <%= ENV.fetch('APP_DATABASE_USERNAME') %>
-  password: <%= ENV.fetch('APP_DATABASE_PASSWORD') %>
-  socket: <%= ENV.fetch('APP_DATABASE_SOCKET') %>
-  host: <%= ENV.fetch('APP_DATABASE_HOST') %>
+  adapter: postgresql
+  encoding: unicode
+  # For details on connection pooling, see Rails configuration guide
+  # http://guides.rubyonrails.org/configuring.html#database-pooling
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
 
 development:
   <<: *default
