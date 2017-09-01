@@ -11,8 +11,8 @@ class Answers::ChecksController < ApplicationController
       end
       bool = (sql == ar_sql)
     rescue => e
-      redirect_to answers_wrong_path(params[:exercise_id])
       logger.fatal e
+      return redirect_to answers_wrong_path(params[:exercise_id])
     end
     if bool
       redirect_to answers_correct_path(params[:exercise_id])
