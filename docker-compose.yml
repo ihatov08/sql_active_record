@@ -1,25 +1,13 @@
-version: '2'
+version: '3'
 services:
   db:
-    image: mysql:5.7
-    environment:
-      MYSQL_ROOT_PASSWORD: "root"
-    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci --innodb-ft-min-token-size=2
-    volumes:
-      - ./db/mysql_data:/var/lib/mysql
+    image: postgres
   web:
     build: .
-    environment:
-      APP_DATABASE_USERNAME: root
-      APP_DATABASE_PASSWORD: "root"
-      APP_DATABASE_HOST: db
-      APP_DATABASE_SOCKET: /var/run/mysqld/mysqld.sock
     command: sh -c 'rm tmp/pids/* || true && bundle exec rails s -p 3000 -b 0.0.0.0'
     volumes:
-      - .:/app
+      - .:/myapp
     ports:
       - "3000:3000"
-    links:
+    depends_on:
       - db
-    tty: true
-    stdin_open: true
