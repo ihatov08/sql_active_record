@@ -5,8 +5,10 @@ class Answers::ChecksController < ApplicationController
       file.puts "p ar = #{params[:answer]}.to_a"
     end
     begin
+      puts 'start'
       logger.debug Exercise.find_by_sql('select * from exercises').to_s
       logger.debug `rails runner #{filename}`.chomp
+      puts 'end'
       bool = (Exercise.find_by_sql('select * from exercises').to_s == `rails runner #{filename}`.chomp)
     rescue => e
       redirect_to answers_wrong_path(params[:exercise_id])
