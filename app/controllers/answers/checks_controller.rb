@@ -2,7 +2,7 @@ class Answers::ChecksController < ApplicationController
   def create
     begin
       sql = Exercise.find_by_sql('select * from exercises')
-      ar_sql = eval(prams[:answer])
+      ar_sql = eval(params[:answer])
       bool = (sql == ar_sql)
     rescue => e
       redirect_to answers_wrong_path(params[:exercise_id])
