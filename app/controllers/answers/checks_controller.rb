@@ -1,7 +1,7 @@
 class Answers::ChecksController < ApplicationController
   def create
     begin
-      sql = Exercise.find_by_sql('select * from exercises')
+      sql = Exercise.find_by_sql(Exercise.find(params[:exercise_id]).title)
       ar_sql = eval(params[:answer])
       bool = (sql == ar_sql)
     rescue => e
