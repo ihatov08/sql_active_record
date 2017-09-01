@@ -6,8 +6,8 @@ class Answers::ChecksController < ApplicationController
     end
     begin
       puts 'start'
-      logger.debug Exercise.find_by_sql('select * from exercises').to_s
-      logger.debug `rails runner #{filename}`.chomp
+      logger.info Exercise.find_by_sql('select * from exercises').to_s
+      logger.info `rails runner #{filename}`.chomp
       puts 'end'
       bool = (Exercise.find_by_sql('select * from exercises').to_s == `rails runner #{filename}`.chomp)
     rescue => e
