@@ -11,8 +11,11 @@
 </p>
 
 <p>
-  <strong>Answer:</strong>
-  <%= @exercise.answer %>
+  <%= form_tag answers_checks_path do %>
+     <%= text_field_tag :answer %>
+     <%= hidden_field_tag :exercise_id, params[:id] %>
+     <%= submit_tag '解答する' %>
+  <% end %>
 </p>
 
 <%= link_to 'Edit', edit_exercise_path(@exercise) %> |

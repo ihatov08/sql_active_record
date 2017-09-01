@@ -1,0 +1,2 @@
+module Answers::CheckHelper
+end
