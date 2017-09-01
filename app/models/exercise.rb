@@ -7,7 +7,8 @@ class Exercise < ApplicationRecord
 
   def check?(ar_sql)
     sql = Exercise.find_by_sql(title)
-    ar_sql = eval(ar_sql)
+    # クラス名固定なのでstringで受け取れるようにしたほうがいいか
+    ar_sql = Exercise.class_eval(ar_sql)
 
     if ar_sql.respond_to?(:to_a)
       ar_sql = ar_sql.to_a
