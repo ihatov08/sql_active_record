@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
   namespace :answers do
     resources :wrongs, only: :show
     resources :corrects, only: :show
