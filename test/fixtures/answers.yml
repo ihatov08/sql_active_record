@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  Exercise: one
+  body: MyText
+  kind: 1
+
+two:
+  Exercise: two
+  body: MyText
+  kind: 1
