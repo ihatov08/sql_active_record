@@ -1,20 +1,25 @@
 class Exercise < ApplicationRecord
   with_options presence: true do
     validates :title
-    validates :body
     validates :answer
   end
 
-  def check?(ar_sql)
-    sql = Exercise.find_by_sql(title)
-    # クラス名固定なのでstringで受け取れるようにしたほうがいいか
-    ar_sql = Exercise.class_eval(ar_sql)
+  # ar_sql => "Exercise.all" 文字列で渡ってくる
+  # table_name => exercises
+  # table_name.classify.constantize => Exercise
+  # table_name.constantize.class_eval(string_activerecord_query)
+  def check?(string_activerecord_query)
+    model_class = table_name.classify.constantize
+    generate_sql_by_active_record = model_class.class_eval(string_activerecord_query).to_sql
+    title == generate_sql_by_active_record
 
-    if ar_sql.respond_to?(:to_a)
-      ar_sql = ar_sql.to_a
-    else
-      ar_sql = [ar_sql]
-    end
-    sql == ar_sql
+    # find, find_by使うとactive_record_relationで返ってこない
+    # 返ってくるレコードが同じか判定したい場合は、↓コードを使う
+    # if activerecord_relation.respond_to?(:to_a)
+    #   activerecord_relation = activerecord_relation.to_a
+    # else
+    #   activerecord_relation = [activerecord_relation]
+    # end
+    # sql == activerecord_relation
   end
 end
