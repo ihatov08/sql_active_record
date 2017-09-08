@@ -37,6 +37,9 @@ gem 'seed-fu'
 gem 'activeadmin' #, github: 'activeadmin'
 gem "inherited_resources" #, git: "https://github.com/activeadmin/inherited_resources"
 gem 'devise'
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem "paperclip"
 
 group :development, :test do
   # Use mysql as the database for Active Record
@@ -47,6 +50,7 @@ group :development, :test do
   gem 'selenium-webdriver'
   gem 'pry-byebug'
   gem 'pry-doc'
+  gem 'dotenv-rails'
 end
 
 group :development do
