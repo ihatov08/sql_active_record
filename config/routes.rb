@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     resources :checks, only: :create
   end
 
-  root to: 'exercises#index'
+  root to: 'home#index'
   resources :exercises
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
