@@ -40,6 +40,7 @@ gem 'devise'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem "paperclip"
+gem "coderay"
 
 group :development, :test do
   # Use mysql as the database for Active Record

@@ -290,6 +290,7 @@ DEPENDENCIES
   activeadmin
   byebug
   capybara (~> 2.13)
+  coderay
   coffee-rails (~> 4.2)
   devise
   dotenv-rails

@@ -12,7 +12,8 @@ class Exercise < ApplicationRecord
   def check?(string_activerecord_query)
     model_class = table_name.classify.constantize
     generate_sql_by_active_record =
-      model_class.readonly
+      model_class
+        .readonly
         .class_eval(string_activerecord_query)
         .to_sql
     sql == generate_sql_by_active_record
