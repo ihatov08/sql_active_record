@@ -2,6 +2,7 @@ class Exercise < ApplicationRecord
   with_options presence: true do
     validates :title
     validates :answer
+    validates :sql
   end
 
   # ar_sql => "Exercise.all" 文字列で渡ってくる

@@ -1,3 +1,4 @@
 - id: 1
-  title: "SELECT \"exercises\".* FROM \"exercises\""
+  title: exercisesテーブルから全件、全カラムを取得してください
+  sql: "SELECT \"exercises\".* FROM \"exercises\""
   table_name: 'exercises'
