@@ -16,7 +16,12 @@ class Exercise < ApplicationRecord
         .readonly
         .class_eval(string_activerecord_query)
         .to_sql
-    sql == generate_sql_by_active_record
+
+    if sql == generate_sql_by_active_record
+      true
+    else
+      generate_sql_by_active_record
+    end
 
     # find, find_by使うとactive_record_relationで返ってこない
     # 返ってくるレコードが同じか判定したい場合は、↓コードを使う
