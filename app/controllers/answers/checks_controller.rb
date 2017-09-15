@@ -3,9 +3,13 @@ class Answers::ChecksController < ApplicationController
     @exercise = Exercise.find(params[:exercise_id])
     begin
       answer = @exercise.check?(params[:answer])
+    # syntax errorも捕捉したいのでExceptionクラスを指定
     rescue => e
+      return redirect_to answers_wrong_path(@exercise, answer: e)
       logger.fatal e
-      return redirect_to answers_wrong_path(@exercise, answer: 'SQLが生成できませんでした。。')
+    rescue Exception => e
+      logger.fatal e
+      return redirect_to answers_wrong_path(@exercise, answer: e)
     end
     if answer == true
       redirect_to answers_correct_path(@exercise)

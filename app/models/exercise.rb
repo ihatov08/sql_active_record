@@ -29,7 +29,6 @@ class Exercise < ApplicationRecord
     # sql == activerecord_relation
   end
 
-
   private
 
   def model_class

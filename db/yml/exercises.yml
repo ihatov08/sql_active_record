@@ -12,3 +12,8 @@
   title: exercisesテーブルのtitleカラムに「SQL」が含まれているレコードを取得してください。
   table_name: 'exercises'
   active_record_query: "Exercise.where('title LIKE(?)', '%SQL%')"
+
+- id: 4
+  title: 昨日作成されたexercisesテーブルのレコードをすべて取得してください。
+  table_name: 'exercises'
+  active_record_query: "Exercise.where(created_at: (Time.now.midnight - 1.day)..Time.now.midnight)"
