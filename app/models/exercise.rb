@@ -11,7 +11,10 @@ class Exercise < ApplicationRecord
   # table_name.constantize.class_eval(string_activerecord_query)
   def check?(string_activerecord_query)
     model_class = table_name.classify.constantize
-    generate_sql_by_active_record = model_class.class_eval(string_activerecord_query).to_sql
+    generate_sql_by_active_record =
+      model_class.readonly
+        .class_eval(string_activerecord_query)
+        .to_sql
     title == generate_sql_by_active_record
 
     # find, find_by使うとactive_record_relationで返ってこない
