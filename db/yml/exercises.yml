@@ -1,9 +1,14 @@
 - id: 1
   title: exercisesテーブルから全件、全カラムを取得してください
-  sql: "SELECT \"exercises\".* FROM \"exercises\""
   table_name: 'exercises'
+  active_record_query: "Exercise.all"
 
 - id: 2
   title: exercisesテーブルからtitleカラムがnilのレコードを取得してください
-  sql: "SELECT \"exercises\".* FROM \"exercises\" WHERE \"exercises\".\"title\" IS NULL"
   table_name: 'exercises'
+  active_record_query: "Exercise.where(title: nil)"
+
+- id: 3
+  title: exercisesテーブルのtitleカラムに「SQL」が含まれているレコードを取得してください。
+  table_name: 'exercises'
+  active_record_query: "Exercise.where('title LIKE(?)', '%SQL%')"

@@ -1,26 +1,22 @@
 class Exercise < ApplicationRecord
   with_options presence: true do
     validates :title
-    validates :answer
     validates :sql
+    validates :active_record_query
   end
+
+  before_save :set_sql
 
   # ar_sql => "Exercise.all" 文字列で渡ってくる
   # table_name => exercises
   # table_name.classify.constantize => Exercise
   # table_name.constantize.class_eval(string_activerecord_query)
   def check?(string_activerecord_query)
-    model_class = table_name.classify.constantize
-    generate_sql_by_active_record =
-      model_class
-        .readonly
-        .class_eval(string_activerecord_query)
-        .to_sql
-
-    if sql == generate_sql_by_active_record
+    ar_query = generate_sql_by_acitive_record_query(string_activerecord_query)
+    if sql == ar_query
       true
     else
-      generate_sql_by_active_record
+      ar_query
     end
 
     # find, find_by使うとactive_record_relationで返ってこない
@@ -31,5 +27,23 @@ class Exercise < ApplicationRecord
     #   activerecord_relation = [activerecord_relation]
     # end
     # sql == activerecord_relation
+  end
+
+
+  private
+
+  def model_class
+    table_name.classify.constantize
+  end
+
+  def generate_sql_by_acitive_record_query(string)
+    model_class
+      .readonly
+      .class_eval(string)
+      .to_sql
+  end
+
+  def set_sql
+    self.sql = generate_sql_by_acitive_record_query(active_record_query)
   end
 end
