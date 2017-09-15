@@ -1,17 +1,12 @@
-<p id="notice"><%= notice %></p>
+<div class="mt-3">
+  <h1><%= @exercise.title %></h1>
+</div>
 
-<p>
-  <strong>Title:</strong>
-  <%= @exercise.title %>
-</p>
-
-<p>
+<div class="form-group">
   <%= form_tag answers_checks_path do %>
-     <%= text_field_tag :answer %>
-     <%= hidden_field_tag :exercise_id, params[:id] %>
-     <%= submit_tag '解答する' %>
+    <%= text_area_tag :answer, '', class: 'form-control', rows: 5 %>
+    <%= hidden_field_tag :exercise_id, params[:id] %>
+    <br>
+    <%= submit_tag '解答する', class: 'btn btn-primary' %>
   <% end %>
-</p>
-
-<%= link_to 'Edit', edit_exercise_path(@exercise) %> |
-<%= link_to 'Back', exercises_path %>
+</div>
