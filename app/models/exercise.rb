@@ -15,7 +15,7 @@ class Exercise < ApplicationRecord
       model_class.readonly
         .class_eval(string_activerecord_query)
         .to_sql
-    title == generate_sql_by_active_record
+    sql == generate_sql_by_active_record
 
     # find, find_by使うとactive_record_relationで返ってこない
     # 返ってくるレコードが同じか判定したい場合は、↓コードを使う

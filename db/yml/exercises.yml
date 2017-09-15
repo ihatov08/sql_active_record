@@ -2,3 +2,8 @@
   title: exercisesテーブルから全件、全カラムを取得してください
   sql: "SELECT \"exercises\".* FROM \"exercises\""
   table_name: 'exercises'
+
+- id: 2
+  title: exercisesテーブルからtitleカラムがnilのレコードを取得してください
+  sql: "SELECT \"exercises\".* FROM \"exercises\" WHERE \"exercises\".\"title\" IS NULL"
+  table_name: 'exercises'

@@ -3,6 +3,7 @@ exercises.each do |exercise|
   Exercise.seed do |s|
     s.id = exercise['id']
     s.title = exercise['title']
+    s.sql   = exercise['sql']
     s.table_name = exercise['table_name']
   end
 end

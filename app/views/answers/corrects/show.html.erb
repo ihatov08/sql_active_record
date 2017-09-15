@@ -5,7 +5,7 @@
 <%= link_to "もう一度解答する", exercise_path(params[:id]), class: 'btn btn-secondary' %>
 
 <% unless Exercise.count == params[:id].to_i %>
-  <%= link_to "次の問題に解答する", exercise_path(params[:id].to_i + 1), class: 'btn btn-succes' %>
+  <%= link_to "次の問題に解答する", exercise_path(params[:id].to_i + 1), class: 'btn btn-success' %>
 <% end %>
 
 <%= link_to "一覧に戻る", exercises_path, class: 'btn btn-primary' %>
