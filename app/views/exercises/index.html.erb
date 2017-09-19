@@ -5,14 +5,18 @@
 <table class="table table-striped">
   <thead>
     <tr>
+      <th>問題</th>
       <th>タイトル</th>
     </tr>
   </thead>
   <tbody>
     <% @exercises.each do |exercise| %>
       <tr>
+        <td><%= link_to exercise.id, exercise %></td>
         <td><%= link_to exercise.title.truncate(50), exercise %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
+
+<%= paginate @exercises %>

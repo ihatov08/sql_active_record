@@ -5,7 +5,7 @@ class ExercisesController < ApplicationController
   # GET /exercises
   # GET /exercises.json
   def index
-    @exercises = Exercise.all
+    @exercises = Exercise.order(:id).page(params[:page])
   end
 
   # GET /exercises/1

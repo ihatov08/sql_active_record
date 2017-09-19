@@ -41,6 +41,7 @@ gem 'omniauth'
 gem 'omniauth-facebook'
 gem "paperclip"
 gem "coderay"
+gem "kaminari"
 
 group :development, :test do
   # Use mysql as the database for Active Record
