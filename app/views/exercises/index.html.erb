@@ -6,6 +6,7 @@
   <thead>
     <tr>
       <th>問題</th>
+      <th>カテゴリ</th>
       <th>タイトル</th>
     </tr>
   </thead>
@@ -13,7 +14,8 @@
     <% @exercises.each do |exercise| %>
       <tr>
         <td><%= link_to exercise.id, exercise %></td>
-        <td><%= link_to exercise.title.truncate(50), exercise %></td>
+        <td><%= exercise.category.name %></td>
+        <td><%= link_to exercise.sql.truncate(50), exercise %></td>
       </tr>
     <% end %>
   </tbody>

@@ -5,6 +5,8 @@ class Exercise < ApplicationRecord
     validates :active_record_query
   end
 
+  belongs_to :category
+
   before_save :set_sql
 
   # ar_sql => "Exercise.all" 文字列で渡ってくる

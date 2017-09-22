@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  expence: MyString
+  memo: MyString
+  deposit: 1
+  amount: 1
+
+two:
+  expence: MyString
+  memo: MyString
+  deposit: 1
+  amount: 1

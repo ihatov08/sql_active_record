@@ -1,0 +1,20 @@
+- id: 1
+  name: BASIC編
+
+- id: 2
+  name: SELECT編
+
+- id: 3
+  name: 検索結果の加工
+
+- id: 4
+  name: 式と関数
+
+- id: 5
+  name: 集計とグループ化
+
+- id: 6
+  name: 副問合せ
+
+- id: 7
+  name: テーブル結合

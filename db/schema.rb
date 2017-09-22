@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170915093438) do
+ActiveRecord::Schema.define(version: 20170922071028) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,6 +55,12 @@ ActiveRecord::Schema.define(version: 20170915093438) do
     t.index ["exercise_id"], name: "index_answers_on_exercise_id"
   end
 
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "exercises", force: :cascade do |t|
     t.text "title", null: false
     t.string "table_name", null: false
@@ -62,6 +68,17 @@ ActiveRecord::Schema.define(version: 20170915093438) do
     t.datetime "updated_at", null: false
     t.text "sql"
     t.text "active_record_query"
+    t.bigint "category_id"
+    t.index ["category_id"], name: "index_exercises_on_category_id"
+  end
+
+  create_table "money_books", force: :cascade do |t|
+    t.string "item", null: false
+    t.string "memo"
+    t.integer "recieve", default: 0, null: false
+    t.integer "pay", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -89,4 +106,5 @@ ActiveRecord::Schema.define(version: 20170915093438) do
   end
 
   add_foreign_key "answers", "exercises"
+  add_foreign_key "exercises", "categories"
 end

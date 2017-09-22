@@ -1,0 +1,2 @@
+class MoneyBook < ApplicationRecord
+end
