@@ -27,3 +27,39 @@
   table_name: money_books
   active_record_query: MoneyBook.where('pay IS NULL')
   category_id: 2
+
+- id: 6
+  title: タイトルどうしよう
+  table_name: money_books
+  active_record_query: MoneyBook.where("memo LIKE ?", "%1月%")
+  category_id: 2
+
+- id: 7
+  title: タイトルどうしよう
+  table_name: money_books
+  active_record_query: "MoneyBook.where(created_at: (Time.now.midnight - 1.day)..Time.now.midnight)"
+  category_id: 2
+
+- id: 8
+  title: タイトルどうしよう
+  table_name: money_books
+  active_record_query: "MoneyBook.where(pay: 1000..10000)"
+  category_id: 2
+
+- id: 9
+  title: タイトルどうしよう
+  table_name: money_books
+  active_record_query: "MoneyBook.where(item: %w(食費 光熱費))"
+  category_id: 2
+
+- id: 10
+  title: タイトルどうしよう
+  table_name: money_books
+  active_record_query: "MoneyBook.where("pay > ANY ('{?}')", [1000, 2000, 3000])"
+  category_id: 2
+
+- id: 11
+  title: タイトルどうしよう
+  table_name: money_books
+  active_record_query: "MoneyBook.where("pay > ALL ('{?}')", [1000, 2000, 3000])"
+  category_id: 2
