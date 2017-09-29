@@ -40,17 +40,17 @@ end
 
 Exercise.seed do |s|
   s.id =  6
-  s.title =  'タイトルどうしよう'
-  s.table_name =  'money_books'
-  s.active_record_query =  MoneyBook.where("memo LIKE ?", "%1月%").to_sql
-  s.category_id =  2
+  s.title = 'タイトルどうしよう'
+  s.table_name = 'money_books'
+  s.active_record_query = MoneyBook.where("memo LIKE ?", "%1月%").to_sql
+  s.category_id = 2
 end
 
 Exercise.seed do |s|
   s.id = 7
   s.title = 'タイトルどうしよう'
   s.table_name = 'money_books'
-  s.active_record_query = MoneyBook.where(created_at: (Time.now.midnight  1.day)..Time.now.midnight).to_sql
+  s.active_record_query = MoneyBook.where(created_at: (Time.now.midnight - 1.day)..Time.now.midnight).to_sql
   s.category_id = 2
 end
 
