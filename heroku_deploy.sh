@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/local/bin/fish
 
 echo "deploy to production"
 git push heroku master
