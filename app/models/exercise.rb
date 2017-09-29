@@ -7,7 +7,7 @@ class Exercise < ApplicationRecord
 
   belongs_to :category
 
-  # before_save :set_sql
+  before_save :set_sql
 
   # ar_sql => "Exercise.all" 文字列で渡ってくる
   # table_name => exercises
@@ -44,7 +44,7 @@ class Exercise < ApplicationRecord
       .to_sql
   end
 
-  # def set_sql
-  #   self.sql = generate_sql_by_acitive_record_query(active_record_query)
-  # end
+  def set_sql
+    self.sql = generate_sql_by_acitive_record_query(active_record_query)
+  end
 end
