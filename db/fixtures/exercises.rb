@@ -85,3 +85,11 @@ Exercise.seed do |s|
   s.active_record_query = MoneyBook.where("pay > ALL ('{?}')", [1000,2000,3000]).to_sql
   s.category_id = 2
 end
+
+Exercise.seed do |s|
+  s.id = 12
+  s.title = 'タイトルどうしよう'
+  s.table_name = 'cities'
+  s.active_record_query = City.where('population >= 10000').where(countrycode: 'JPN').to_sql
+  s.category_id = 2
+end
