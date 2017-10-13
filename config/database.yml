@@ -21,10 +21,13 @@ development:
   <<: *default
   database: myapp_development
 
-
 test:
   <<: *default
   database: myapp_test
+
+exec_sql_test:
+  <<: *default
+  database: myapp_exec_sql_test
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is

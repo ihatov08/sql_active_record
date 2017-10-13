@@ -291,5 +291,4 @@ ActiveAdmin.setup do |config|
   #
   # config.order_clause = MyOrderClause
   config.clear_stylesheets!
-  config.register_stylesheet 'admin/active_admin.css'
 end

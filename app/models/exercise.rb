@@ -15,6 +15,7 @@ class Exercise < ApplicationRecord
   # table_name.constantize.class_eval(string_activerecord_query)
   def check?(string_activerecord_query)
     ar_query = generate_sql_by_acitive_record_query(string_activerecord_query)
+    return '不正なコードです' unless ar_query
     if sql == ar_query
       true
     else
@@ -37,11 +38,17 @@ class Exercise < ApplicationRecord
     table_name.classify.constantize
   end
 
+  def model_class_class_eval(string)
+    model_class.readonly.class_eval(string)
+  end
+
+  def respond_to_to_sql?(string)
+    model_class_class_eval(string).respond_to?(:to_sql)
+  end
+
   def generate_sql_by_acitive_record_query(string)
-    model_class
-      .readonly
-      .class_eval(string)
-      .to_sql
+    return unless respond_to_to_sql?(string)
+    model_class_class_eval(string).to_sql
   end
 
   def set_sql
