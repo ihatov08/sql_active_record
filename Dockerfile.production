@@ -2,7 +2,7 @@
 
 FROM ruby:2.4.1
 ENV LANG C.UTF-8
-RAILS_ENV=production
+
 RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs imagemagick
 RUN mkdir /myapp
 WORKDIR /myapp
@@ -11,7 +11,12 @@ ADD Gemfile.lock /myapp/Gemfile.lock
 RUN bundle install
 ADD . /myapp
 
-RUN bundle exec rake assets:precompile
+# Set Rails to run in production
+ENV RAILS_ENV production
+ENV RACK_ENV production
 
-# Start puma
-CMD bundle exec puma -C config/puma.rb
+# Copy the main application.
+COPY . ./
+
+# Precompile Rails assets
+RUN bundle exec rake assets:precompile
